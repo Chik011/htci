@@ -12,10 +12,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const savedUsername = window.localStorage.getItem("htciUsername");
   const currentPage = window.location.pathname.split("/").pop();
   const protectedPages = ["dashboard.html", "devices.html", "profile.html"];
-  if (protectedPages.includes(currentPage) && !savedUsername) {
-    window.location.replace("login.html");
-    return;
-  }
   const displayUsername = savedUsername || "User";
   const displayInitials = displayUsername.slice(0, 2).toUpperCase();
   const firebaseDatabaseUrl =
@@ -48,7 +44,10 @@ document.addEventListener("DOMContentLoaded", () => {
       return null;
     }
     const [profile, token] = await Promise.all([
-      firebase.get(firebase.ref(firebase.database, `users/${user.uid}`)),
+      firebase.get(firebase.ref(firebase.database, `users/${user.uid}`)).catch(error => {
+        console.warn("Profil belum dapat dibaca:", error);
+        return { val: () => null };
+      }),
       user.getIdTokenResult(),
     ]);
     const isAdmin = token.claims.admin === true || profile.val()?.role === "admin";
@@ -427,12 +426,13 @@ document.addEventListener("DOMContentLoaded", () => {
     const usernameLabel = loginForm.querySelector('label[for="email"]');
     const emailInput = loginForm.querySelector("#email");
     if (usernameLabel && emailInput) {
-      usernameLabel.textContent = "Username";
+      usernameLabel.textContent = "Username atau email";
       usernameLabel.htmlFor = "username";
       emailInput.id = "username";
       emailInput.name = "username";
       emailInput.type = "text";
-      emailInput.placeholder = "Masukkan username";
+      emailInput.placeholder = "Masukkan username atau email terdaftar";
+      emailInput.autocomplete = "username";
     }
   }
 
@@ -474,14 +474,17 @@ document.addEventListener("DOMContentLoaded", () => {
     form.addEventListener("submit", async (event) => {
       event.preventDefault();
       const isLogin = form.dataset.authForm !== "register";
-      const username = form
-        .querySelector('input[name="username"]')
-        ?.value.trim();
-      const email = isLogin
-        ? username === "test"
-          ? "test@htci.com"
-          : `${username}@htci.local`
+      const identifier = isLogin
+        ? form.querySelector('input[name="username"]').value.trim()
         : form.querySelector('input[type="email"]').value.trim();
+      const username = isLogin
+        ? identifier.split("@")[0]
+        : form.querySelector("#name").value.trim();
+      const email = identifier.includes("@")
+        ? identifier
+        : identifier.toLowerCase() === "test"
+          ? "test@htci.com"
+          : `${identifier.toLowerCase()}@htci.local`;
       const password = form.querySelector('input[type="password"]').value;
       const authPassword = password;
       const submitButton = form.querySelector('button[type="submit"]');
@@ -494,33 +497,16 @@ document.addEventListener("DOMContentLoaded", () => {
           signInWithEmailAndPassword,
         } = firebase;
         if (!isLogin) {
-          await createUserWithEmailAndPassword(auth, email, authPassword);
+          const credential = await createUserWithEmailAndPassword(auth, email, authPassword);
+          window.localStorage.setItem("htciUsername", username || email.split("@")[0]);
+          try {
+            await saveLogin(firebase, credential.user, username || email.split("@")[0]);
+          } catch (error) {
+            console.warn("Akun berhasil dibuat, tetapi profil belum tersimpan:", error);
+          }
           showToast("Akun berhasil dibuat");
         } else {
-          let userCredential;
-          try {
-            userCredential = await signInWithEmailAndPassword(
-              auth,
-              email,
-              authPassword,
-            );
-          } catch (error) {
-            if (
-              username === "test" &&
-              password === "123456" &&
-              ["auth/user-not-found", "auth/invalid-credential"].includes(
-                error.code,
-              )
-            ) {
-              userCredential = await createUserWithEmailAndPassword(
-                auth,
-                email,
-                authPassword,
-              );
-            } else {
-              throw error;
-            }
-          }
+          const userCredential = await signInWithEmailAndPassword(auth, email, authPassword);
           try {
             await saveLogin(firebase, userCredential.user, username);
           } catch (error) {
@@ -870,15 +856,17 @@ document.addEventListener("DOMContentLoaded", () => {
       return "Firebase belum terhubung. Jalankan aplikasi melalui server lokal.";
     }
     const messages = {
-      "auth/invalid-credential": "Email atau kata sandi salah.",
+      "auth/invalid-credential": "Akun atau kata sandi salah. Jika mendaftar dengan email, masukkan email lengkap.",
+      "auth/user-not-found": "Akun belum terdaftar. Gunakan email lengkap yang dipakai saat daftar.",
+      "auth/wrong-password": "Kata sandi salah.",
       "auth/email-already-in-use": "Email tersebut sudah terdaftar.",
       "auth/invalid-email": "Format email tidak valid.",
       "auth/weak-password": "Kata sandi minimal 6 karakter.",
       "auth/too-many-requests": "Terlalu banyak percobaan. Coba lagi nanti.",
       "auth/operation-not-allowed": "Login email belum diaktifkan di Firebase.",
-      "auth/unauthorized-domain": "Domain Netlify belum diizinkan di Firebase.",
+      "auth/unauthorized-domain": "Domain situs belum diizinkan di Firebase Authentication.",
       "auth/network-request-failed":
-        "Firebase tidak dapat dijangkau. Cek koneksi, adblocker, atau deploy ulang Netlify.",
+        "Firebase tidak dapat dijangkau. Cek koneksi internet atau pemblokir jaringan.",
       "auth/api-key-not-valid.-please-pass-a-valid-api-key.":
         "API key Firebase tidak valid.",
       "auth/app-not-authorized": "Aplikasi ini belum diizinkan oleh Firebase.",
