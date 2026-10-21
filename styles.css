@@ -1891,3 +1891,5 @@ body {
   opacity: .8;
 }
 .dark-theme .device h3, .dark-theme .device-list > div > b { color: #edf6f2; }
+
+.sensors .sensor-label { display: block; font-weight: 800; line-height: 1.5; margin-bottom: 10px; }
