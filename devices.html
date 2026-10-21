@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kelola Alat | HTCI</title>
+    <link rel="icon" type="image/png" href="img/sgllogo.png" />
+    <link rel="stylesheet" href="styles.css?v=20261021" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar">
+        <a class="brand" href="dashboard.html"
+          ><b>TG</b> Thermo<span>Guard</span></a
+        ><small class="workspace-label">WORKSPACE</small>
+        <nav>
+          <a class="nav-item" href="dashboard.html">⌂ &nbsp; Beranda</a
+          ><a class="nav-item active" href="devices.html"
+            >▦ &nbsp; Kelola Alat <i>3</i></a
+          ><a class="nav-item" href="profile.html">◎ &nbsp; Profil</a>
+        </nav>
+        <div class="sidebar-foot">
+          <div class="help-card">
+            <b>Butuh bantuan?</b><small>Hubungi tim teknis kami</small
+            ><button
+              data-action="toast"
+              data-message="Tim teknis akan segera menghubungi Anda"
+            >
+              Hubungi kami →
+            </button>
+          </div>
+          <div class="user-mini">
+            <b>AR</b><span>Andi Rahman<small>Administrator</small></span
+            ><button data-action="logout">↪</button>
+          </div>
+        </div>
+      </aside>
+      <main class="main">
+        <header>
+          <span>Workspace &nbsp;/&nbsp; <b>Kelola Alat</b></span
+          ><span class="live">● &nbsp;Data live &nbsp; <b>AR</b></span>
+        </header>
+        <section class="page active">
+          <div class="heading">
+            <div>
+              <small>KONFIGURASI PERANGKAT</small>
+              <h1>Kelola alat</h1>
+              <p>Daftar perangkat IoT yang terhubung. Penambahan alat dikelola oleh admin.</p>
+            </div>
+            <button
+              class="primary"
+              data-admin-only hidden
+              data-action="toast"
+              data-message="Form tambah alat dibuka"
+            >
+              ＋ &nbsp;Tambah alat
+            </button>
+          </div>
+          <div class="toolbar">
+            ⌕ <input placeholder="Cari nama atau ID alat..." />
+          </div>
+          <div class="device-list">
+            <div>
+              <b>♨ &nbsp; Insinerator Utama</b
+              ><small>TG-2401-A</small
+              ><button
+                class="edit" hidden
+                data-action="toast"
+                data-message="Mode edit alat dibuka"
+              >
+                Edit</button
+              ><button
+                class="delete" hidden
+                data-action="toast"
+                data-message="Alat berhasil dihapus"
+              >
+                Hapus
+              </button>
+            </div>
+            <div>
+              <b>▦ &nbsp; Boiler Produksi</b
+              ><small>TG-2401-B</small
+              ><button
+                class="edit" hidden
+                data-action="toast"
+                data-message="Mode edit alat dibuka"
+              >
+                Edit</button
+              ><button
+                class="delete" hidden
+                data-action="toast"
+                data-message="Alat berhasil dihapus"
+              >
+                Hapus
+              </button>
+            </div>
+            <div>
+              <b>♨ &nbsp; Furnace Laboratorium</b
+              ><small>TG-2401-C</small
+              ><button
+                class="edit" hidden
+                data-action="toast"
+                data-message="Mode edit alat dibuka"
+              >
+                Edit</button
+              ><button
+                class="delete" hidden
+                data-action="toast"
+                data-message="Alat berhasil dihapus"
+              >
+                Hapus
+              </button>
+            </div>
+            <div>
+              <b>♨ &nbsp; Dryer Cadangan</b><small>TG-2401-D</small
+              ><button
+                class="edit" hidden
+                data-action="toast"
+                data-message="Alat berhasil dihapus"
+              >
+                Edit</button
+              ><button
+                class="delete" hidden
+                data-action="toast"
+                data-message="Alat berhasil dihapus"
+              >
+                Hapus
+              </button>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+    <div class="toast" id="toast"></div>
+    <script src="app.js?v=20261021"></script>
+  </body>
+</html>

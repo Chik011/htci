@@ -1,0 +1,38 @@
+{
+  "rules": {
+    ".read": false,
+    ".write": false,
+    "users": {
+      "$uid": {
+        ".read": "(auth != null && auth.uid === $uid) || (auth != null && (auth.token.admin === true || root.child('users').child(auth.uid).child('role').val() === 'admin'))",
+        "username": {
+          ".write": "(auth != null && auth.uid === $uid) || (auth != null && (auth.token.admin === true || root.child('users').child(auth.uid).child('role').val() === 'admin'))"
+        },
+        "uid": {
+          ".write": "auth != null && auth.uid === $uid",
+          ".validate": "newData.val() === auth.uid"
+        },
+        "lastLogin": {
+          ".write": "auth != null && auth.uid === $uid"
+        },
+        "role": {
+          ".write": "auth != null && (auth.token.admin === true || root.child('users').child(auth.uid).child('role').val() === 'admin')",
+          ".validate": "newData.val() === 'admin' || newData.val() === 'user'"
+        },
+        "api": {
+          ".write": "auth != null && (auth.token.admin === true || root.child('users').child(auth.uid).child('role').val() === 'admin')"
+        }
+      }
+    },
+    "deviceLinks": {
+      ".read": "auth != null",
+      ".write": "auth != null && (auth.token.admin === true || root.child('users').child(auth.uid).child('role').val() === 'admin')"
+    },
+    "loginHistory": {
+      "$uid": {
+        ".read": "(auth != null && auth.uid === $uid) || (auth != null && (auth.token.admin === true || root.child('users').child(auth.uid).child('role').val() === 'admin'))",
+        ".write": "auth != null && auth.uid === $uid"
+      }
+    }
+  }
+}

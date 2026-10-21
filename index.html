@@ -1,0 +1,376 @@
+﻿<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Masuk | HTCI</title>
+    <meta http-equiv="refresh" content="0; url=login.html" />
+    <style>
+      body {
+        visibility: hidden;
+      }
+    </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="icon" type="image/png" href="img/sgllogo.png" />
+    <link rel="stylesheet" href="styles.css?v=20261021" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar">
+        <div class="brand"><b>TG</b> Thermo<span>Guard</span></div>
+        <small class="workspace-label">WORKSPACE</small>
+        <nav>
+          <button class="nav-item active" data-page="home">
+            ⌂ &nbsp; Beranda</button
+          ><button class="nav-item" data-page="devices">
+            ▦ &nbsp; Kelola Alat <i>3</i></button
+          ><button class="nav-item" data-page="profile">◎ &nbsp; Profil</button>
+        </nav>
+        <div class="sidebar-foot">
+          <div class="help-card">
+            <b>Butuh bantuan?</b><small>Hubungi tim teknis kami</small
+            ><button>Hubungi kami →</button>
+          </div>
+          <div class="user-mini">
+            <b>AR</b><span>Andi Rahman<small>Administrator</small></span
+            ><button id="logout">↪</button>
+          </div>
+        </div>
+      </aside>
+      <main class="main">
+        <header>
+          <span>Workspace &nbsp;/&nbsp; <b id="crumb">Beranda</b></span
+          ><span class="live">● &nbsp;Data live &nbsp; <b>AR</b></span>
+        </header>
+        <section class="page active" id="home">
+          <div class="heading">
+            <div>
+              <small>SENIN, 12 AGUSTUS 2024 &nbsp;•&nbsp; 09:41 WIB</small>
+              <h1>Selamat pagi, Andi <em>✦</em></h1>
+              <p>
+                Pantau kondisi seluruh alat pembakaran Anda dalam satu tampilan.
+              </p>
+            </div>
+            <button class="primary" id="refresh">↻ &nbsp; Refresh data</button>
+          </div>
+          <div class="summary">
+            <article>
+              <label>Alat aktif</label
+              ><strong>3 <small>/ 4 alat</small></strong>
+              <div class="bar"><i style="width: 75%"></i></div>
+              <small>1 alat sedang offline</small>
+            </article>
+            <article>
+              <label>Suhu rata-rata</label><strong>386<small>°C</small></strong
+              ><small class="up">↗ 4,2% dari kemarin</small>
+            </article>
+            <article>
+              <label>Kualitas gas</label><strong>Baik</strong
+              ><small>Rata-rata seluruh alat</small
+              ><mark>Dalam batas aman</mark>
+            </article>
+            <article>
+              <label>Peringatan</label
+              ><strong>2 <small>peringatan</small></strong
+              ><small>Perlu ditinjau hari ini</small
+              ><button class="link" id="alerts">Lihat peringatan →</button>
+            </article>
+          </div>
+          <div class="section-title">
+            <div>
+              <h2>Monitoring alat</h2>
+            </div>
+          </div>
+          <div class="devices">
+            <article class="device">
+              <span class="status online">● Online</span>
+              <h3>Insinerator Utama</h3>
+              <small>ID: TG-2401-A</small>
+              <div class="temp">
+                Suhu gas buang<strong>412<small>°C</small></strong
+                ><b>↗ 2,6%</b>
+              </div>
+              <div class="sensors">
+                <div>
+                  PM 2.5<strong>18 <small>µg/m³</small></strong
+                  ><mark>Normal</mark>
+                </div>
+                <div>
+                  Kandungan gas<strong>CO <small>32 ppm</small></strong
+                  ><mark>Normal</mark>
+                </div>
+              </div>
+              <footer>
+                Kualitas gas buang <b>Baik</b>
+                <div class="bar"><i style="width: 82%"></i></div>
+              </footer>
+            </article>
+            <article class="device warning">
+              <span class="status">● Perlu perhatian</span>
+              <h3>Boiler Produksi</h3>
+              <small>ID: TG-2401-B</small>
+              <div class="temp">
+                Suhu gas buang<strong>389<small>°C</small></strong
+                ><b>↘ 1,1%</b>
+              </div>
+              <div class="sensors">
+                <div>
+                  PM 2.5<strong class="orange">76 <small>µg/m³</small></strong
+                  ><mark class="caution">Tinggi</mark>
+                </div>
+                <div>
+                  Kandungan gas<strong>CO <small>48 ppm</small></strong
+                  ><mark>Normal</mark>
+                </div>
+              </div>
+              <footer>
+                Kualitas gas buang <b class="orange">Perhatian</b>
+                <div class="bar">
+                  <i class="orange-bar" style="width: 56%"></i>
+                </div>
+              </footer>
+            </article>
+            <article class="device">
+              <span class="status online">● Online</span>
+              <h3>Furnace Laboratorium</h3>
+              <small>ID: TG-2401-C</small>
+              <div class="temp">
+                Suhu gas buang<strong>358<small>°C</small></strong
+                ><b>↗ 0,8%</b>
+              </div>
+              <div class="sensors">
+                <div>
+                  PM 2.5<strong>12 <small>µg/m³</small></strong
+                  ><mark>Normal</mark>
+                </div>
+                <div>
+                  Kandungan gas<strong>CO <small>27 ppm</small></strong
+                  ><mark>Normal</mark>
+                </div>
+              </div>
+              <footer>
+                Kualitas gas buang <b>Baik</b>
+                <div class="bar"><i style="width: 91%"></i></div>
+              </footer>
+            </article>
+          </div>
+          <div class="bottom">
+            <article>
+              <h2>Aktivitas terbaru</h2>
+              <p>
+                ✓ &nbsp; <b>Insinerator Utama kembali online</b
+                ><small>Sensor terhubung kembali · 12 menit lalu</small>
+              </p>
+              <p class="orange">
+                ! &nbsp; <b>PM 2.5 melebihi batas normal</b
+                ><small>Boiler Produksi · 28 menit lalu</small>
+              </p>
+            </article>
+            <article>
+              <h2>Uptime perangkat</h2>
+              <strong class="uptime">98,7% <small>↗ 1,4%</small></strong>
+              <div class="chart">▂ ▅ ▃ ▇ ▅ █ ▇</div>
+            </article>
+          </div>
+        </section>
+        <section class="page" id="devices">
+          <div class="heading">
+            <div>
+              <small>KONFIGURASI PERANGKAT</small>
+              <h1>Kelola alat</h1>
+              <p>Tambah dan atur perangkat IoT yang terhubung ke workspace.</p>
+            </div>
+            <button class="primary" id="add">＋ &nbsp;Tambah alat</button>
+          </div>
+          <div class="toolbar">
+            ⌕ <input placeholder="Cari nama atau ID alat..." />
+          </div>
+          <div class="device-list">
+            <div>
+              <b>♨ &nbsp; Insinerator Utama</b
+              ><small>TG-2401-A · ● Online</small
+              ><button class="edit">Edit</button
+              ><button class="delete">Hapus</button>
+            </div>
+            <div>
+              <b>▦ &nbsp; Boiler Produksi</b
+              ><small>TG-2401-B · ● Perlu perhatian</small
+              ><button class="edit">Edit</button
+              ><button class="delete">Hapus</button>
+            </div>
+            <div>
+              <b>♨ &nbsp; Furnace Laboratorium</b
+              ><small>TG-2401-C · ● Online</small
+              ><button class="edit">Edit</button
+              ><button class="delete">Hapus</button>
+            </div>
+            <div>
+              <b>♨ &nbsp; Dryer Cadangan</b><small>TG-2401-D · ● Offline</small
+              ><button class="edit">Edit</button
+              ><button class="delete">Hapus</button>
+            </div>
+          </div>
+        </section>
+        <section class="page" id="profile">
+          <div class="heading">
+            <div>
+              <small>PENGATURAN WORKSPACE</small>
+              <h1>Profil & pengaturan</h1>
+              <p>Atur akun dan preferensi pengalaman monitoring Anda.</p>
+            </div>
+          </div>
+          <div class="profile">
+            <article>
+              <div class="cover"></div>
+              <b class="profile-avatar">AR</b>
+              <h2>Andi Rahman</h2>
+              <p>Administrator · andi.rahman@htci.id</p>
+              <button class="outline">Edit profil</button>
+            </article>
+            <article class="settings">
+              <h2>Preferensi</h2>
+              <div>
+                <b>Bahasa aplikasi</b
+                ><small>Pilih bahasa yang digunakan di dashboard</small
+                ><select>
+                  <option>Bahasa Indonesia</option>
+                  <option>English</option>
+                </select>
+              </div>
+              <div>
+                <b>Tema tampilan</b
+                ><small>Sesuaikan tampilan untuk kenyamanan Anda</small
+                ><button class="theme active">☼ Terang</button
+                ><button class="theme">◐ Gelap</button>
+              </div>
+              <div>
+                <b>Notifikasi peringatan</b
+                ><small>Dapatkan notifikasi saat sensor melewati batas</small
+                ><input type="checkbox" checked />
+              </div>
+              <button class="danger" id="logout2">↪ Keluar dari akun</button>
+            </article>
+          </div>
+        </section>
+      </main>
+    </div>
+    <div class="toast" id="toast"></div>
+    <div class="modal" id="auth">
+      <div>
+        <button class="close">×</button><b class="modal-logo">TG</b
+        ><small>HTCI WORKSPACE</small>
+        <h2 id="auth-title">Selamat datang kembali</h2>
+        <p>Masuk untuk memantau alat pembakaran Anda.</p>
+        <label>Email<input type="email" placeholder="nama@gmail.com" /></label
+        ><label
+          >Kata sandi<input type="password" placeholder="••••••••" /></label
+        ><button class="primary full">Masuk ke dashboard →</button>
+        <p>
+          Belum punya akun?
+          <button class="link" id="register">Daftar sekarang</button>
+        </p>
+      </div>
+    </div>
+    <div class="modal" id="device-modal">
+      <div>
+        <button class="close">×</button><small>PERANGKAT IOT</small>
+        <h2>Tambah alat baru</h2>
+        <p>Hubungkan alat pembakaran ke workspace Anda.</p>
+        <label
+          >Nama alat<input placeholder="Contoh: Incinerator Gedung B" /></label
+        ><label>Device ID<input placeholder="TG-2401-X" /></label
+        ><label>API Key<input placeholder="Masukkan API key perangkat" /></label
+        ><button class="primary full" id="save">Simpan alat</button>
+      </div>
+    </div>
+    <script>
+      const toast = (m) => {
+        const e = document.getElementById("toast");
+        e.textContent = m;
+        e.classList.add("show");
+        setTimeout(() => e.classList.remove("show"), 2200);
+      };
+      document.querySelectorAll(".nav-item").forEach(
+        (b) =>
+          (b.onclick = () => {
+            document
+              .querySelectorAll(".nav-item")
+              .forEach((x) => x.classList.remove("active"));
+            b.classList.add("active");
+            document
+              .querySelectorAll(".page")
+              .forEach((x) => x.classList.remove("active"));
+            document.getElementById(b.dataset.page).classList.add("active");
+            document.getElementById("crumb").textContent = b.textContent.trim();
+          }),
+      );
+      document.getElementById("refresh").onclick = () =>
+        toast("Data sensor berhasil diperbarui");
+      document.getElementById("alerts").onclick = () =>
+        toast("Menampilkan 2 peringatan aktif");
+      const auth = document.getElementById("auth");
+      const open = () => auth.classList.add("show");
+      document.getElementById("logout").onclick = open;
+      document.getElementById("logout2").onclick = open;
+      document
+        .querySelectorAll(".close")
+        .forEach(
+          (b) =>
+            (b.onclick = () =>
+              b.parentElement.parentElement.classList.remove("show")),
+        );
+      document.querySelector(".full").onclick = () => {
+        auth.classList.remove("show");
+        toast("Berhasil masuk ke workspace");
+      };
+      document.getElementById("register").onclick = () => {
+        document.getElementById("auth-title").textContent = "Buat akun baru";
+      };
+      const modal = document.getElementById("device-modal");
+      document.getElementById("add").onclick = () =>
+        modal.classList.add("show");
+      document.getElementById("save").onclick = () => {
+        modal.classList.remove("show");
+        toast("Alat berhasil ditambahkan");
+      };
+      document.querySelectorAll(".delete").forEach(
+        (b) =>
+          (b.onclick = () => {
+            b.parentElement.remove();
+            toast("Alat berhasil dihapus");
+          }),
+      );
+      document
+        .querySelectorAll(".edit")
+        .forEach((b) => (b.onclick = () => toast("Mode edit alat dibuka")));
+      document.querySelectorAll(".theme").forEach(
+        (b) =>
+          (b.onclick = () => {
+            document
+              .querySelectorAll(".theme")
+              .forEach((x) => x.classList.remove("active"));
+            b.classList.add("active");
+            toast("Tema tampilan diperbarui");
+          }),
+      );
+    </script>
+    <script>
+      document
+        .querySelectorAll(".help-card button")
+        .forEach(
+          (button) =>
+            (button.onclick = () =>
+              window.open(
+                "https://wa.me/+62895360799127",
+                "_blank",
+                "noopener",
+              )),
+        );
+    </script>
+  </body>
+</html>

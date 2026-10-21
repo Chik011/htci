@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Beranda | HTCI</title>
+    <link rel="icon" type="image/png" href="img/sgllogo.png" />
+    <link rel="stylesheet" href="styles.css?v=20261021" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar">
+        <a class="brand" href="dashboard.html"
+          ><b>TG</b> Thermo<span>Guard</span></a
+        ><small class="workspace-label">WORKSPACE</small>
+        <nav>
+          <a class="nav-item active" href="dashboard.html">⌂ &nbsp; Beranda</a
+          ><a class="nav-item" href="devices.html"
+            >▦ &nbsp; Kelola Alat <i>3</i></a
+          ><a class="nav-item" href="profile.html">◎ &nbsp; Profil</a>
+        </nav>
+        <div class="sidebar-foot">
+          <div class="help-card">
+            <b>Butuh bantuan?</b><small>Hubungi tim teknis kami</small
+            ><button
+              data-action="toast"
+              data-message="Tim teknis akan segera menghubungi Anda"
+            >
+              Hubungi kami →
+            </button>
+          </div>
+          <div class="user-mini">
+            <b>AR</b><span>Andi Rahman<small>Administrator</small></span
+            ><button data-action="logout">↪</button>
+          </div>
+        </div>
+      </aside>
+      <main class="main">
+        <header>
+          <span>Workspace &nbsp;/&nbsp; <b>Beranda</b></span
+          ><span class="live">● &nbsp;Data live &nbsp; <b>AR</b></span>
+        </header>
+        <section class="page active">
+          <div class="heading">
+            <div>
+              <small>SENIN, 12 AGUSTUS 2024 &nbsp;•&nbsp; 09:41 WIB</small>
+              <h1>Selamat pagi, Andi <em>✦</em></h1>
+              <p>
+                Pantau kondisi seluruh alat pembakaran Anda dalam satu tampilan.
+              </p>
+            </div>
+            <button
+              class="primary"
+              data-action="toast"
+              data-message="Data sensor berhasil diperbarui"
+            >
+              ↻ &nbsp; Refresh data
+            </button>
+          </div>
+          <div class="summary">
+            <article>
+              <label>Alat aktif</label
+              ><strong>3 <small>/ 4 alat</small></strong>
+              <div class="bar"><i style="width: 75%"></i></div>
+              <small>1 alat sedang offline</small>
+            </article>
+            <article>
+              <label>Suhu rata-rata</label><strong>386<small>°C</small></strong
+              ><small class="up">↗ 4,2% dari kemarin</small>
+            </article>
+            <article>
+              <label>Kualitas gas</label><strong>Baik</strong
+              ><small>Rata-rata seluruh alat</small
+              ><mark>Dalam batas aman</mark>
+            </article>
+            <article>
+              <label>Peringatan</label
+              ><strong>2 <small>peringatan</small></strong
+              ><small>Perlu ditinjau hari ini</small
+              ><button
+                class="link"
+                data-action="toast"
+                data-message="Ada 2 peringatan aktif"
+              >
+                Lihat peringatan →
+              </button>
+            </article>
+          </div>
+          <div class="section-title">
+            <div>
+              <h2>Monitoring alat</h2>
+            </div>
+          </div>
+          <div class="devices">
+            <article class="device">
+              <h3>Insinerator Utama</h3>
+              <small>ID: TG-2401-A</small>
+              <div class="temp">
+                Suhu gas buang<strong>412<small>°C</small></strong
+                ><b>↗ 2,6%</b>
+              </div>
+              <div class="sensors">
+                <div>
+                  PM 2.5<strong>18 <small>µg/m³</small></strong
+                  ><mark>Normal</mark>
+                </div>
+                <div>
+                  Kandungan gas<strong>CO <small>32 ppm</small></strong
+                  ><mark>Normal</mark>
+                </div>
+              </div>
+              <footer>
+                Kualitas gas buang <b>Baik</b>
+                <div class="bar"><i style="width: 82%"></i></div>
+              </footer>
+            </article>
+            <article class="device warning">
+              <h3>Boiler Produksi</h3>
+              <small>ID: TG-2401-B</small>
+              <div class="temp">
+                Suhu gas buang<strong>389<small>°C</small></strong
+                ><b>↘ 1,1%</b>
+              </div>
+              <div class="sensors">
+                <div>
+                  PM 2.5<strong class="orange">76 <small>µg/m³</small></strong
+                  ><mark class="caution">Tinggi</mark>
+                </div>
+                <div>
+                  Kandungan gas<strong>CO <small>48 ppm</small></strong
+                  ><mark>Normal</mark>
+                </div>
+              </div>
+              <footer>
+                Kualitas gas buang <b class="orange">Perhatian</b>
+                <div class="bar">
+                  <i class="orange-bar" style="width: 56%"></i>
+                </div>
+              </footer>
+            </article>
+            <article class="device">
+              <h3>Furnace Laboratorium</h3>
+              <small>ID: TG-2401-C</small>
+              <div class="temp">
+                Suhu gas buang<strong>358<small>°C</small></strong
+                ><b>↗ 0,8%</b>
+              </div>
+              <div class="sensors">
+                <div>
+                  PM 2.5<strong>12 <small>µg/m³</small></strong
+                  ><mark>Normal</mark>
+                </div>
+                <div>
+                  Kandungan gas<strong>CO <small>27 ppm</small></strong
+                  ><mark>Normal</mark>
+                </div>
+              </div>
+              <footer>
+                Kualitas gas buang <b>Baik</b>
+                <div class="bar"><i style="width: 91%"></i></div>
+              </footer>
+            </article>
+          </div>
+          <div class="bottom">
+            <article>
+              <h2>Aktivitas terbaru</h2>
+              <p>
+                ✓ &nbsp; <b>Insinerator Utama kembali online</b
+                ><small>Sensor terhubung kembali · 12 menit lalu</small>
+              </p>
+              <p class="orange">
+                ! &nbsp; <b>PM 2.5 melebihi batas normal</b
+                ><small>Boiler Produksi · 28 menit lalu</small>
+              </p>
+            </article>
+            <article>
+              <h2>Uptime perangkat</h2>
+              <strong class="uptime">98,7% <small>↗ 1,4%</small></strong>
+              <div class="chart">▂ ▅ ▃ ▇ ▅ █ ▇</div>
+            </article>
+          </div>
+        </section>
+      </main>
+    </div>
+    <div class="toast" id="toast"></div>
+    <script src="app.js?v=20261021"></script>
+  </body>
+</html>

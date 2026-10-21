@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Daftar | HTCI</title>
+    <link rel="icon" type="image/png" href="img/sgllogo.png" />
+    <link rel="stylesheet" href="styles.css?v=20261021" />
+  </head>
+  <body class="auth-page">
+    <main class="auth-layout">
+      <section class="auth-intro">
+        <a class="brand" href="index.html"
+          ><b>TG</b> Thermo<span>Guard</span></a
+        >
+        <div class="intro-copy">
+          <p class="eyebrow">MULAI SEKARANG</p>
+          <h1>Satu ruang kerja<br /><em>untuk semua alat.</em></h1>
+        </div>
+      </section>
+      <section class="auth-panel">
+        <div class="auth-form-wrap">
+          <p class="eyebrow">BUAT AKUN BARU</p>
+          <h2>Daftar workspace</h2>
+          <p class="form-description">
+            Buat akun untuk mulai mengelola perangkat.
+          </p>
+          <form data-auth-form="register">
+            <label for="name">Nama lengkap</label
+            ><input
+              id="name"
+              type="text"
+              placeholder="Nama Anda"
+              required
+            /><label for="register-email">Email kerja</label
+            ><input
+              id="register-email"
+              type="email"
+              placeholder="nama@gmail.com"
+              required
+            /><label for="register-password">Kata sandi</label
+            ><input
+              id="register-password"
+              type="password"
+              placeholder="Minimal 6 karakter"
+              minlength="6"
+              required
+            /><button class="primary auth-submit" type="submit">
+              Buat akun <span>→</span>
+            </button>
+          </form>
+          <p class="auth-switch">
+            Sudah punya akun? <a href="index.html">Masuk di sini</a>
+          </p>
+        </div>
+        <small class="auth-footer"
+          >Dengan mendaftar, Anda menyetujui ketentuan penggunaan HTCI.</small
+        >
+      </section>
+    </main>
+    <div class="toast" id="toast"></div>
+    <script src="app.js?v=20261021"></script>
+  </body>
+</html>

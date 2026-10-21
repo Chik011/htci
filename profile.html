@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Profil | HTCI</title>
+    <link rel="icon" type="image/png" href="img/sgllogo.png" />
+    <link rel="stylesheet" href="styles.css?v=20261021" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar">
+        <a class="brand" href="dashboard.html"
+          ><b>TG</b> Thermo<span>Guard</span></a
+        ><small class="workspace-label">WORKSPACE</small>
+        <nav>
+          <a class="nav-item" href="dashboard.html">⌂ &nbsp; Beranda</a
+          ><a class="nav-item" href="devices.html"
+            >▦ &nbsp; Kelola Alat <i>3</i></a
+          ><a class="nav-item active" href="profile.html">◎ &nbsp; Profil</a>
+        </nav>
+        <div class="sidebar-foot">
+          <div class="help-card">
+            <b>Butuh bantuan?</b><small>Hubungi tim teknis kami</small
+            ><button
+              data-action="toast"
+              data-message="Tim teknis akan segera menghubungi Anda"
+            >
+              Hubungi kami →
+            </button>
+          </div>
+          <div class="user-mini">
+            <b>AR</b><span>Andi Rahman<small>Administrator</small></span
+            ><button data-action="logout">↪</button>
+          </div>
+        </div>
+      </aside>
+      <main class="main">
+        <header>
+          <span>Workspace &nbsp;/&nbsp; <b>Profil</b></span
+          ><span class="live">● &nbsp;Data live &nbsp; <b>AR</b></span>
+        </header>
+        <section class="page active">
+          <div class="heading">
+            <div>
+              <small>PENGATURAN WORKSPACE</small>
+              <h1>Profil & pengaturan</h1>
+              <p>Atur akun dan preferensi pengalaman monitoring Anda.</p>
+            </div>
+          </div>
+          <div class="profile">
+            <article>
+              <div class="cover"></div>
+              <b class="profile-avatar">AR</b>
+              <h2>Andi Rahman</h2>
+              <p>Administrator · andi.rahman@htci.id</p>
+              <button
+                class="outline"
+                data-action="toast"
+                data-message="Mode edit profil dibuka"
+              >
+                Edit profil
+              </button>
+            </article>
+            <article class="settings">
+              <h2>Preferensi</h2>
+              <div>
+                <b>Bahasa aplikasi</b
+                ><small>Pilih bahasa yang digunakan di dashboard</small
+                ><select>
+                  <option>Bahasa Indonesia</option>
+                  <option>English</option>
+                </select>
+              </div>
+              <div>
+                <b>Tema tampilan</b
+                ><small>Sesuaikan tampilan untuk kenyamanan Anda</small
+                ><button class="theme active">☼ Terang</button
+                ><button class="theme">◐ Gelap</button>
+              </div>
+              <div>
+                <b>Notifikasi peringatan</b
+                ><small>Dapatkan notifikasi saat sensor melewati batas</small
+                ><input type="checkbox" checked />
+              </div>
+              <button class="danger" data-action="logout">
+                ↪ Keluar dari akun
+              </button>
+            </article>
+          </div>
+        </section>
+      </main>
+    </div>
+    <div class="toast" id="toast"></div>
+    <script src="app.js?v=20261021"></script>
+  </body>
+</html>
