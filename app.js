@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const toast = document.getElementById("toast");
   const authSwitch = document.querySelector(".auth-switch");
   const introCopy = document.querySelector(".intro-copy");
-  const greeting = document.querySelector(".heading h1");
+  const greeting = document.querySelector("[data-greeting]");
   const viewport = document.querySelector('meta[name="viewport"]');
   if (viewport)
     viewport.setAttribute(
@@ -102,13 +102,27 @@ document.addEventListener("DOMContentLoaded", () => {
   };
   updateWibClock();
   window.setInterval(updateWibClock, 30000);
-  if (greeting) {
-    const greetingAccent = greeting.querySelector("em");
+  const greetingAccent = greeting?.querySelector("em");
+  const updateGreeting = () => {
+    if (!greeting) return;
+    const hour = Number(new Intl.DateTimeFormat("en-GB", {
+      timeZone: "Asia/Jakarta",
+      hour: "2-digit",
+      hourCycle: "h23",
+    }).format(new Date()));
+    const period = hour >= 5 && hour < 11 ? "pagi"
+      : hour >= 11 && hour < 15 ? "siang"
+      : hour >= 15 && hour < 18 ? "sore" : "malam";
     greeting.textContent = savedUsername
-      ? `Selamat pagi, ${savedUsername} `
-      : "Selamat pagi ";
+      ? `Selamat ${period}, ${savedUsername} `
+      : `Selamat ${period} `;
     if (greetingAccent) greeting.appendChild(greetingAccent);
-  }
+  };
+  updateGreeting();
+  window.setInterval(updateGreeting, 30000);
+  document.addEventListener("visibilitychange", () => {
+    if (!document.hidden) updateGreeting();
+  });
   document.querySelectorAll(".user-mini").forEach((userMini) => {
     const avatar = userMini.querySelector(":scope > b");
     const userLabel = userMini.querySelector(":scope > span");
